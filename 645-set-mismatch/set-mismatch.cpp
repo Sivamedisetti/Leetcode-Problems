@@ -1,26 +1,29 @@
 class Solution {
 public:
     vector<int> findErrorNums(vector<int>& nums) {
+        sort(nums.begin(),nums.end());
         int n=nums.size();
-        vector<int>ans;
-        map<int,int>mp;
-        for(auto it:nums)
+        int OS=(n*(n+1))/2;
+        int AS=0,D,M,Diff;
+        for(int i=0;i<n-1;i++)
         {
-            mp[it]++;
-            if(mp[it]==2)
+            AS+=nums[i];
+            if(nums[i]==nums[i+1])
             {
-                ans.push_back(it);
+                D=nums[i];
             }
         }
-        int x=1;
-        while(true){
-            if(mp[x]==0)
-            {
-                ans.push_back(x);
-                break;
-            }
-            x+=1;
+        AS+=nums[n-1];
+        Diff=abs(OS-AS);
+        if(AS<OS)
+        {
+            M=D+Diff;
         }
-        return ans;
+        else
+        {
+            M=Diff-D;
+        }
+        M=abs(M);
+        return {D,M};
     }
 };
