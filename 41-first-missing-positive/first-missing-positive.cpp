@@ -3,18 +3,17 @@ class Solution {
 public:
     
     int firstMissingPositive(vector<int>& nums) {
-        map<int,int>vec;
-        for(auto it:nums)
+        sort(nums.begin(),nums.end());
+        int k = 1;
+        for(auto i:nums)
         {
-            vec[it]++;
-        }
-        for(int i=1;i<=pow(2,31);i++)
-        {
-            if(vec[i]==0)
+            if(i==k) k++;
+            else if(i<0) continue;
+            else if(i>k)
             {
-                return i;
+                return k;
             }
         }
-        return 0;
+        return k;
     }
 };
