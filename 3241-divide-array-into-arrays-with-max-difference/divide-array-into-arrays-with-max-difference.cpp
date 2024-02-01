@@ -3,11 +3,11 @@ public:
     vector<vector<int>> divideArray(vector<int>& nums, int k) {
         sort(nums.begin(),nums.end());
         vector<vector<int>>vec;
-        for(int i=1;i<nums.size();i++)
-        {
+        // for(int i=1;i<nums.size();i++)
+        // {
             
-            if(abs(nums[i-1]-nums[i])>k and (i)%3!=0 )return {};
-        }
+        //     if(abs(nums[i-1]-nums[i])>k and (i)%3!=0 )return {};
+        // }
         for(int i=1;i<nums.size();i+=3)
         {
             if(abs(nums[i-1]-nums[i+1])>k)return {};
