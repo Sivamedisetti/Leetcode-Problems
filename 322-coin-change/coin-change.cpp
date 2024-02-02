@@ -1,7 +1,6 @@
 class Solution {
 public:
-    int DP[100001];
-    long long CoinChange(int n,int k,vector<int>A){
+    long long CoinChange(int n,int k,vector<int>A,vector<int>&DP){
 	if(k==0)return 0;
 	if(k<0)return -1;
 	 if(DP[k]!=-1)return DP[k];
@@ -11,7 +10,7 @@ public:
 	{
 		if(A[i]<=k)
 		{
-			ans=1+CoinChange(n,k-A[i],A);
+			ans=1+CoinChange(n,k-A[i],A,DP);
 			res=min(ans,res);
 		}
 		res=min(ans,res);
@@ -22,9 +21,9 @@ public:
     int coinChange(vector<int>& arr, int k) {
 
         int n=arr.size();
-        memset(DP,-1,sizeof(DP));
-        if(CoinChange(n,k,arr)==INT_MAX) return -1;
+        vector<int>DP(k+1,-1);
+        if(CoinChange(n,k,arr,DP)==INT_MAX) return -1;
         else
-            return CoinChange(n,k,arr);
+            return CoinChange(n,k,arr,DP);
         }
 };
