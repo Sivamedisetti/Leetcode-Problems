@@ -2,7 +2,18 @@ class Solution {
 public:
     string firstPalindrome(vector<string>& words) {
         for(auto it:words){
-            if(it == string(it.rbegin(),it.rend())) return it;
+            int n=it.size(),f=0;
+            cout<<endl;
+            for(int i=0;i<n/2;i++){
+               
+                if(it[i]!=it[n-1-i]){
+                    f=1;
+                    cout<<it[i]<<":"<<it[n-1-i]<<" = "<<f<<" ";
+                    break;
+                }
+            }
+                if(f==0)return it;
+
         }
         return "";
     }
