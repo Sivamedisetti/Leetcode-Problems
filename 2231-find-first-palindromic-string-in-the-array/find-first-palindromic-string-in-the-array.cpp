@@ -8,7 +8,6 @@ public:
                
                 if(it[i]!=it[n-1-i]){
                     f=1;
-                    cout<<it[i]<<":"<<it[n-1-i]<<" = "<<f<<" ";
                     break;
                 }
             }
