@@ -1,8 +1,6 @@
 class Solution {
 public:
-    //long long hash[1000000009]={0};
     int findLeastNumOfUniqueInts(vector<int>& arr, int k) {
-      //  int m=*max_element(arr.begin(),arr.end());
         map<int,int>mp;
         vector<int>hash;
         for(int i=0;i<arr.size();i++){
@@ -15,7 +13,7 @@ public:
         int cnt=0;
         for(auto it:hash){
             k=k-it;
-            if(it!=0 and k<0) cnt++;
+            if(k<0) cnt++;
         }
         return cnt;
     }
