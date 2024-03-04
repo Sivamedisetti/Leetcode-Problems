@@ -15,7 +15,6 @@ public:
             while(i<n and j>0){
                 if(tokens[i]>power){
                     s--;
-                    // m=max(m,s);
                     if(i<=j){
                         power+=tokens[j--];
                     }
