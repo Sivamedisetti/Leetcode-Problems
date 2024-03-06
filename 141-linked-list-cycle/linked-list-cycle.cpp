@@ -11,7 +11,7 @@ public:
     bool hasCycle(ListNode *head) {
         ios_base::sync_with_stdio(0);
         cin.tie(nullptr);
-        cout.tie(nullptr);
+        cout.tie(NULL);
         if(head==NULL)return false;
         ListNode *t=head;
         while(t!=NULL){
