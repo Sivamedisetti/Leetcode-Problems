@@ -1,9 +1,10 @@
 class Solution {
 public:
+     Solution(){
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+    }
     int getCommon(vector<int>& nums1, vector<int>& nums2) {
-        ios::sync_with_stdio(0);
-        cin.tie(0);
-        cout.tie(0);
         int n=nums1.size();
         int m=nums2.size(),i=0,j=0;
         while(i<n && j<m){
