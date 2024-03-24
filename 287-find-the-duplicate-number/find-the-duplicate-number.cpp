@@ -1,3 +1,7 @@
+#define faster                 \
+  ios::sync_with_stdio(false); \
+  cin.tie(nullptr);            \
+  cout.tie(nullptr);
 class Solution {
 public:
     int findDuplicate(vector<int>& nums) {
