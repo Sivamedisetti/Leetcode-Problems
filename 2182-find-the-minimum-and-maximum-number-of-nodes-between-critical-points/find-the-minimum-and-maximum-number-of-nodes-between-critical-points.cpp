@@ -15,11 +15,11 @@ public:
         int count=1;
         while(head->next->next){
             count++;
-            int l=head->val,m=head->next->val,r=head->next->next->val;
-            if(l>m && m<r){
+            int left=head->val,mid=head->next->val,right=head->next->next->val;
+            if(left>mid && mid<right){
                 vec.push_back(count);
             }
-            if(l<m && m>r){
+            if(left<mid && mid>right){
                 vec.push_back(count);
             }
             head=head->next;
@@ -27,11 +27,9 @@ public:
         if(vec.size()<2)return {-1,-1};
         int mini=INT_MAX,maxi;
         for(int i=0;i<vec.size()-1;i++){
-            int diff=vec[i+1]-vec[i];
-            mini=min(mini,diff);
+            mini=min(mini,vec[i+1]-vec[i]);
         }
         maxi=vec[vec.size()-1]-vec[0];
-
         return {mini,maxi};
     }
 };
