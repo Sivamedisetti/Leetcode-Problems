@@ -5,6 +5,7 @@ public:
         int count=0;
         if(y>=x)
         {
+            //check ba to the count
             for(auto it:s)
             {
                 if(!st.empty()&& st.top()=='b'&&it =='a')
@@ -17,12 +18,13 @@ public:
                 }
             }
             s="";
+            //reversing the stack
             while(!st.empty())
             {
                 s+=st.top();
                 st.pop();
             }
-            cout<<s;
+            //check ba add ab to the count
             for(auto ch:s){
                 if(!st.empty()&& st.top()=='b'&& ch=='a')
                 {
@@ -36,7 +38,7 @@ public:
         }
         else
         {
-
+            //check ab add to count;
             for(auto it:s)
               {
                 if(!st.empty()&& st.top()=='a'&&it=='b')
@@ -47,12 +49,13 @@ public:
                 else st.push(it);
             }
              s="";
+            //reverse the stack
             while(!st.empty())
             {
                 s+=st.top();
                 st.pop();
             }
-            cout<<s;
+            //check ab add ba to the count
             for(auto ch:s){
                 if(!st.empty()&& st.top()=='a'&& ch=='b')
                 {
