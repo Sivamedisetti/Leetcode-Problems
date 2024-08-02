@@ -1,30 +1,29 @@
 class Solution {
 public:
     int minSwaps(vector<int>& nums) {
-        int windowSize=0;
-        int ans = 0, cnt = 0;
-        vector<int>vec;
-        for(int i=0;i<nums.size();i++){
-            vec.push_back(nums[i]);
-        }
-        for(int i=0;i<nums.size();i++){
-            vec.push_back(nums[i]);
-        }
-        for(auto it:nums){
-            // nums.push_back(it);
-            if(it==1)windowSize++;
+        int windowSize = 0, ans = 0, cnt = 0;
+        int n = nums.size();
+        
+        // Calculate the number of 1's in the array
+        for(int num : nums) {
+            if(num == 1) windowSize++;
         }
 
-        for(int i=0; i<windowSize; i++)
-        {
-            if(nums[i]==1)cnt++;
+        // Early return if there are no 1's
+        if(windowSize == 0) return 0;
+
+        // Calculate initial count of 1's in the first window
+        for(int i = 0; i < windowSize; i++) {
+            if(nums[i] == 1) cnt++;
+        }
+        ans = cnt;
+
+        // Slide the window over the array with a circular approach
+        for(int i = 1; i < n; i++) {
+            cnt += nums[(i + windowSize - 1) % n] - nums[i - 1];
+            ans = max(ans, cnt);
         }
 
-        for(int i = windowSize; i<vec.size(); i++){
-            cnt+=vec[i]-vec[i-windowSize];
-            ans=max(cnt,ans);
-        }
-        return windowSize-ans;
-
+        return windowSize - ans;
     }
 };
