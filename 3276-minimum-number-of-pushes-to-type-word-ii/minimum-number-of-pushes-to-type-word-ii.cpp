@@ -1,14 +1,11 @@
 class Solution {
 public:
     int minimumPushes(string word) {
-        unordered_map<char,int>mp;
-        vector<int>ds;
+        vector<int>ds(26,0);
         int ans=0;
 
-        for(auto it:word)mp[it]++;
-
-        for(auto it:mp){
-            ds.push_back(it.second);
+        for(auto it:word){
+            ds[it-'a']++;
         }
         sort(ds.rbegin(),ds.rend());
         int push=1;
