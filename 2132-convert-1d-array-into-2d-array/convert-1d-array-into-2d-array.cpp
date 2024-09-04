@@ -1,19 +1,21 @@
 class Solution {
 public:
     vector<vector<int>> construct2DArray(vector<int>& original, int m, int n) {
-        vector<vector<int>>Array;
-        vector<int>vec;
-        for(int i=0;i<original.size();i++){
-            vec.push_back(original[i]);
-            if(vec.size()==n)
+        vector<vector<int>>matrix(m , vector<int>(n , 0));
+        int size = original.size();
+        int index = 0;
+        for(int i = 0;i<m ;i++)
+        {
+            for(int j = 0;j<n;j++)
             {
-                Array.push_back(vec);
-                vec.clear();
+                if(index >= size) return {};
+                matrix[i][j] = original[index];
+                index++;
             }
-            
         }
-        if(vec.size()!=0) return {};
-        if(Array.size()!=m) return {};
-        return Array; 
+
+        if(index>size) return {};
+        else if(index < size) return {};
+        else return matrix;
     }
 };
