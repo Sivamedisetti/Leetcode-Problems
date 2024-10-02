@@ -5,7 +5,7 @@ public:
         vector<int>dummy=arr;
         vector<int>result;
         sort(dummy.begin(),dummy.end());
-        map<int,int>mp;
+        unordered_map<int,int>mp;
         int rank = 1;
         for(auto it: dummy)
         {
