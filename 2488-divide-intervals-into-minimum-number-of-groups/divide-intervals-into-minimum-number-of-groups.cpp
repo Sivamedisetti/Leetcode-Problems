@@ -2,7 +2,6 @@ class Solution {
 public:
     int minGroups(vector<vector<int>>& intervals) {
         
-        int minMumGrp = 0;
         sort(intervals.begin(), intervals.end());
         priority_queue<int, vector<int>, greater<int>>pq;
 
@@ -13,19 +12,9 @@ public:
             if(intervals[i][0] > pq.top())
             {
                 pq.pop();
-                pq.push(intervals[i][1]);
             }
-            else
-            {
-                pq.push(intervals[i][1]);
-            }
-          
+            pq.push(intervals[i][1]);
         }
-        while(!pq.empty())
-        {
-            minMumGrp++;
-            pq.pop();
-        }
-        return minMumGrp;
+        return pq.size();
     }
 };
