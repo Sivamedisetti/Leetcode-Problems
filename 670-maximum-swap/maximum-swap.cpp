@@ -1,27 +1,32 @@
 class Solution {
 public:
     int maximumSwap(int num) {
-        string s = to_string(num);
-        int max_ind = 0, st_pos = 0;
-        while(st_pos < s.size()-1){
-            int maxi = 0; 
-            for(int i = st_pos; i<s.size(); i++)
-            {
-                int dig = s[i] - '0';
-                if(dig >= maxi)
-                {
-                    max_ind = i;
-                    maxi = dig;
-                }
+        string s = to_string(num);  // Convert num to string
+        int n = s.size();
+        
+        // Step 1: Precompute the rightmost max digit's index for each position
+        vector<int> rightMaxIndex(n);
+        rightMaxIndex[n-1] = n-1;  // Last digit is its own rightmost max
+        
+        // Fill rightMaxIndex array
+        for (int i = n-2; i >= 0; i--) {
+            if (s[i] > s[rightMaxIndex[i+1]]) {
+                rightMaxIndex[i] = i;  // Current digit is larger
+            } else {
+                rightMaxIndex[i] = rightMaxIndex[i+1];  // Use the rightmost max
             }
-            if(s[st_pos] != s[max_ind])
-            {
-                cout<<s[st_pos];
-                swap(s[st_pos], s[max_ind]);
-                break;
-            }
-            st_pos++;
         }
+        
+        // Step 2: Find the first place to swap
+        for (int i = 0; i < n; i++) {
+            if (s[i] != s[rightMaxIndex[i]]) {
+                // Swap the current digit with the rightmost larger digit
+                swap(s[i], s[rightMaxIndex[i]]);
+                break;  // Only one swap allowed, so exit after the first swap
+            }
+        }
+        
+        // Convert the modified string back to an integer and return it
         return stoi(s);
     }
 };
