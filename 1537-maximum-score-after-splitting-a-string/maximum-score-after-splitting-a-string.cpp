@@ -1,32 +1,20 @@
 class Solution {
 public:
     int maxScore(string s) {
-        int left =0,right=1;
-        int rightcnt=0,leftcnt=0, score=0, maxiscore=0;
-
-        while(right<s.length())
+        int ones = count(s.begin(),s.end(),'1');
+        int zeros = 0 , score = 0;
+        for(int i = 0; i<s.size()-1; i++)
         {
-            leftcnt = 0,rightcnt = 0;
-            for(int i = left; i<right;i++)
+            if(s[i] == '1')
             {
-                if(s[i]=='0')
-                {
-                    leftcnt++;
-                }
+                ones--;
             }
-            for(int j = right; j<s.length();j++)
+            else
             {
-                if(s[j]=='1')
-                {
-                    rightcnt++;
-                }
+                zeros++;
             }
-            score = leftcnt+rightcnt;
-            maxiscore = max(score,maxiscore);
-            score = 0;
-            right++;
+            score = max(score, ones + zeros);
         }
-        return maxiscore;
-
+        return score;
     }
 };
